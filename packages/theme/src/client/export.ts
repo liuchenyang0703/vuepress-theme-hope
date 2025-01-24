@@ -1,3 +1,4 @@
+export { setupHeaders } from "@theme-hope/composables/index";
 export {
   injectDarkmode,
   setupDarkmode,
