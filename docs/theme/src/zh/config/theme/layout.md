@@ -13,7 +13,7 @@ tag:
 
 <!-- more -->
 
-## 导航栏
+## 导航栏相关
 
 ### navbar <Badge text="建议配置" type="tip" />
 
@@ -61,6 +61,8 @@ tag:
 
 - 类型: `string`
 - 必填: 否
+- 详情:
+  - [布局 → 导航栏 → 站点图标](../../guide/layout/navbar.md#站点图标)
 
 导航栏图标，应为基于 `.vuepress/public` 文件夹的绝对路径。
 
@@ -68,6 +70,8 @@ tag:
 
 - 类型: `string`
 - 默认值: `logo`
+- 详情:
+  - [布局 → 导航栏 → 站点图标](../../guide/layout/navbar.md#站点图标)
 
 夜间模式下导航栏图标，应为基于 `.vuepress/public` 文件夹的绝对路径。
 
@@ -82,6 +86,8 @@ tag:
 
 - 类型: `string`
 - 必填: 否
+- 详情:
+  - [布局 → 导航栏 → Git 仓库和编辑链接](../../guide/layout/navbar.md#git-仓库和编辑链接)
 
 仓库配置，用于在导航栏中显示仓库链接。
 
@@ -89,6 +95,8 @@ tag:
 
 - 类型: `boolean`
 - 默认值: `true`
+- 详情:
+  - [布局 → 导航栏 → Git 仓库和编辑链接](../../guide/layout/navbar.md#git-仓库和编辑链接)
 
 是否在导航栏显示仓库链接。
 
@@ -96,6 +104,8 @@ tag:
 
 - 类型: `string`
 - 必填: 否
+- 详情:
+  - [布局 → 导航栏 → Git 仓库和编辑链接](../../guide/layout/navbar.md#git-仓库和编辑链接)
 
 用于导航栏仓库按钮的无障碍标签。
 
@@ -119,7 +129,7 @@ tag:
 
 是否在移动视图下隐藏站点名称。
 
-## 侧边栏
+## 侧边栏相关
 
 关于配置指南，详见 [布局 → 侧边栏](../../guide/layout/sidebar.md)。
 
@@ -211,14 +221,7 @@ tag:
 - `title`: 按标题字母顺序排序
 - `filename`: 按文件名字母顺序排序
 
-### headerDepth
-
-- 类型: `number`
-- 默认值: `2`
-
-侧边栏嵌套的标题深度。
-
-## 路径导航
+## 导航相关
 
 ### breadcrumb
 
@@ -248,14 +251,16 @@ tag:
 
 是否在页面底部显示下一篇链接。
 
-## 标题
+## 页面元数据
 
-### titleIcon
+### headerDepth
 
-- 类型: `boolean`
-- 默认值: `true`
+- 类型: `number`
+- 默认值: `2`
+- 详情:
+  - [布局 → 页面](../../guide/layout/page.md#设置标题深度)
 
-是否在页面标题旁显示图标。
+侧边栏和 TOC 中的标题深度。
 
 ### pageInfo
 
@@ -275,7 +280,12 @@ tag:
 - `"Word"`: 字数
 - `"PageView"`: 页面浏览量
 
-## Meta
+### titleIcon
+
+- 类型: `boolean`
+- 默认值: `true`
+
+是否在页面标题旁显示图标。
 
 ### lastUpdated
 
@@ -290,6 +300,13 @@ tag:
 - 默认值: `true`
 
 是否显示页面贡献者
+
+### changelog
+
+- 类型: `boolean`
+- 默认值: `true`
+
+是否显示变更日志
 
 ### editLink
 

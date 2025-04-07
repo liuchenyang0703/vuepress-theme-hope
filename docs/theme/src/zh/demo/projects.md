@@ -518,6 +518,20 @@ blogs:
     url: https://guoxicheng.top
     repo: https://github.com/GuoXiCheng/guoxicheng.github.io
     preview: /assets/image/guo-s-page-zh.png
+
+  - name: RichELF
+    desc: 给机器以生命，给岁月以文明。
+    logo: https://richelf.tech/favicon.ico
+    url: https://richelf.tech/
+    repo: https://github.com/Vang-z/RichELF2
+    preview: https://richelf.tech/assets/images/background.avif
+
+  - name: 耳朵同的博客
+    desc: 耳朵同的博客和笔记
+    logo: https://blog.erduotong.com/logo.png
+    url: https://blog.erduotong.com/
+    repo: https://github.com/erduotong/erduotong.github.io
+    preview: https://blog.erduotong.com/blog_preview.png
 ---
 
 ## 使用 VuePress Theme Hope 的文档

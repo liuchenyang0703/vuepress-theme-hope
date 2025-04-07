@@ -12,7 +12,7 @@ tag:
 
 ## Requirement
 
-- Env: LTS Versions of Node.js (>=18.19.0, 20.x)
+- Env: LTS Versions of Node.js (^18.19.0, ^20.6.0, ^22.0.0)
 - Package Manager: npm >= 8, yarn >= 2, pnpm >= 7
 - A VuePress2 project with Vue3
 
@@ -76,7 +76,7 @@ npm init vuepress-theme-hope@latest add <dir>
 
 Please import and use `hopeTheme` to use `vuepress-theme-hope`, the first argument accepted by `hopeTheme` will be used as the theme config:
 
-```js {5} title=".vuepress/config.js"
+```ts twoslash {5} title=".vuepress/config.ts"
 import { hopeTheme } from "vuepress-theme-hope";
 
 export default {

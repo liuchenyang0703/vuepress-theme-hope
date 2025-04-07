@@ -13,7 +13,7 @@ The following options control theme layout.
 
 <!-- more  -->
 
-## Navbar Config
+## Navbar Related
 
 ### navbar <Badge text="Recommended" type="tip" />
 
@@ -61,6 +61,8 @@ Customize navbar layout.
 
 - Type: `string`
 - Required: No
+- Details:
+  - [Layout → Navbar → Site Logo](../../guide/layout/navbar.md#site-logo)
 
 Navbar logo, should be absolute path relative to `.vuepress/public` folder.
 
@@ -68,6 +70,8 @@ Navbar logo, should be absolute path relative to `.vuepress/public` folder.
 
 - Type: `string`
 - Default: `logo`
+- Details:
+  - [Layout → Navbar → Site Logo](../../guide/layout/navbar.md#site-logo)
 
 Navbar logo in dark mode, should be absolute path relative to `.vuepress/public` folder.
 
@@ -82,6 +86,8 @@ Navbar title, you can set it to an empty string to hide it.
 
 - Type: `string`
 - Required: No
+- Details:
+  - [Layout → Navbar → Git Repository and Edit Links](../../guide/layout/navbar.md#git-repository-and-edit-links)
 
 Repository link
 
@@ -89,6 +95,8 @@ Repository link
 
 - Type: `boolean`
 - Default: `true`
+- Details:
+  - [Layout → Navbar → Git Repository and Edit Links](../../guide/layout/navbar.md#git-repository-and-edit-links)
 
 Whether display repo link in navbar.
 
@@ -96,6 +104,8 @@ Whether display repo link in navbar.
 
 - Type: `string`
 - Required: No
+- Details:
+  - [Layout → Navbar → Git Repository and Edit Links](../../guide/layout/navbar.md#git-repository-and-edit-links)
 
 Repository aria label of navbar.
 
@@ -119,7 +129,7 @@ Whether to hide navbar when scrolling down.
 
 Whether hide site title on mobile.
 
-## Sidebar Config
+## Sidebar Related
 
 For guide, see [Layout → Sidebar](../../guide/layout/sidebar.md).
 
@@ -211,13 +221,6 @@ Available keywords are:
 - `title`: alphabetically sort by title
 - `filename`: alphabetically sort by filename
 
-### headerDepth
-
-- Type: `number`
-- Default: `2`
-
-Nested headings depth
-
 ## Route Navigation
 
 ### breadcrumb
@@ -248,14 +251,23 @@ Whether show prevLink in bottom.
 
 Whether show nextLink in bottom.
 
-## Title
+## Page Meta
+
+### headerDepth
+
+- Type: `number`
+- Default: `2`
+- Details:
+  - [Layout → Page](../../guide/layout/page.md#setting-header-depth)
+
+Header nesting depth inside sidebar and TOC.
 
 ### titleIcon
 
 - Type: `boolean`
 - Default: `true`
 
-Whether display icon besides page title
+Whether to display an icon beside the page title.
 
 ### pageInfo
 
@@ -275,8 +287,6 @@ Available items in `ArticleInfo`:
 - `"Word"`: word number for the article
 - `"PageView"`: pageviews
 
-## Meta
-
 ### lastUpdated
 
 - Type: `boolean`
@@ -290,6 +300,13 @@ Whether to show "Last Updated" or not.
 - Default: `true`
 
 Whether to show "Contributors" or not.
+
+### changelog
+
+- Type: `boolean`
+- Default: `true`
+
+Whether to show changelog.
 
 ### editLink
 

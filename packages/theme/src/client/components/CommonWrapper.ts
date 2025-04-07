@@ -37,6 +37,7 @@ import type {
   ThemeProjectHomePageFrontmatter,
 } from "../../shared/index.js";
 
+import "@vuepress/helper/transition/fade-in.css";
 import "../styles/common-wrapper.scss";
 
 export default defineComponent({
@@ -87,7 +88,7 @@ export default defineComponent({
     const frontmatter = usePageFrontmatter<
       ThemeProjectHomePageFrontmatter | ThemeNormalPageFrontmatter
     >();
-    const themeData = useThemeData();
+    const theme = useThemeData();
     const themeLocale = useThemeLocaleData();
     const { isMobile, isPC } = useWindowSize();
     const isPure = usePure();
@@ -123,7 +124,7 @@ export default defineComponent({
       if (props.noSidebar) return false;
 
       return (
-        frontmatter.value.sidebar !== false &&
+        (frontmatter.value.sidebar ?? true) &&
         sidebarItems.value.length !== 0 &&
         !frontmatter.value.home
       );
@@ -133,7 +134,7 @@ export default defineComponent({
     const enableExternalLinkIcon = computed(
       () =>
         frontmatter.value.externalLinkIcon ??
-        themeData.value.externalLinkIcon ??
+        theme.value.externalLinkIcon ??
         true,
     );
 
@@ -263,7 +264,7 @@ export default defineComponent({
                   )
                 : null,
               // Sidebar mask
-              h(Transition, { name: "fade" }, () =>
+              h(Transition, { name: "fade-in" }, () =>
                 isMobileSidebarOpen.value
                   ? h("div", {
                       class: "vp-sidebar-mask",
@@ -272,7 +273,7 @@ export default defineComponent({
                   : null,
               ),
               // Toggle sidebar button
-              h(Transition, { name: "fade" }, () =>
+              h(Transition, { name: "fade-in" }, () =>
                 isMobile.value
                   ? null
                   : h(

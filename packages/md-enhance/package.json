@@ -1,6 +1,6 @@
 {
   "name": "vuepress-plugin-md-enhance",
-  "version": "2.0.0-rc.72",
+  "version": "2.0.0-rc.78",
   "description": "Markdown enhancement plugin for vuepress",
   "keywords": [
     "vuepress",
@@ -79,7 +79,7 @@
     "@types/babel__core": "7.20.5",
     "@vuepress/bundler-vite": "catalog:vuepress",
     "markdown-it": "14.1.0",
-    "typescript": "5.7.3"
+    "typescript": "5.8.3"
   },
   "peerDependencies": {
     "@vue/repl": "^4.1.1",
@@ -90,7 +90,7 @@
     "markmap-lib": "^0.18.5",
     "markmap-toolbar": "^0.18.5",
     "markmap-view": "^0.18.5",
-    "mermaid": "^11.2.0",
+    "mermaid": "^11.6.0",
     "sandpack-vue3": "^3.0.0",
     "sass": "catalog:range",
     "sass-embedded": "catalog:range",
@@ -139,7 +139,7 @@
     }
   },
   "engines": {
-    "node": ">=18.19.0",
+    "node": "^18.19.0 || >= 20.6.0",
     "npm": ">=8",
     "pnpm": ">=7",
     "yarn": ">=2"

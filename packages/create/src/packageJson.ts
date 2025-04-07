@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import { input, select } from "@inquirer/prompts";
 
 import type { PackageManager, SupportedBundler } from "./config/index.js";
-import { supportedBundlers, version, vuepressVersion } from "./config/index.js";
+import { packageJSON, supportedBundlers } from "./config/index.js";
 import type { CreateLocale } from "./i18n/typings.js";
 import { PACKAGE_NAME_REG, VERSION_REG, deepAssign } from "./utils/index.js";
 
@@ -40,14 +40,13 @@ export const createPackageJson = async ({
   bundler,
   cwd = process.cwd(),
 }: CreatePackageJsonOptions): Promise<void> => {
-  if (!bundler)
-    bundler = await select<SupportedBundler>({
-      message: locale.question.bundler,
-      choices: supportedBundlers.map((bundler) => ({
-        name: bundler,
-        value: bundler,
-      })),
-    });
+  bundler ??= await select<SupportedBundler>({
+    message: locale.question.bundler,
+    choices: supportedBundlers.map((bundler) => ({
+      name: bundler,
+      value: bundler,
+    })),
+  });
 
   /**
    * Generate package.json
@@ -55,14 +54,27 @@ export const createPackageJson = async ({
   const packageJsonPath = resolve(cwd, "package.json");
   const scripts = getScript(packageManager, bundler, source);
   const devDependencies = {
-    [`@vuepress/bundler-${bundler}`]: vuepressVersion,
-    "sass-embedded": "^1.85.0",
-    vue: "^3.5.13",
-    vuepress: vuepressVersion,
-    "vuepress-theme-hope": version,
+    [`@vuepress/bundler-${bundler}`]: packageJSON.devDependencies.vuepress,
+    "sass-embedded": packageJSON.devDependencies["sass-embedded"],
+    ...(bundler === "webpack"
+      ? { "sass-loader": packageJSON.devDependencies["sass-loader"] }
+      : {}),
+    vue: packageJSON.devDependencies.vue,
+    vuepress: packageJSON.devDependencies.vuepress,
+    "vuepress-theme-hope": packageJSON.devDependencies["vuepress-theme-hope"],
   };
 
-  if (bundler === "webpack") devDependencies["sass-loader"] = "^16.0.5";
+  const newContent = {
+    scripts,
+    devDependencies,
+    ...(packageManager === "pnpm"
+      ? {
+          pnpm: {
+            onlyBuiltDependencies: ["esbuild"],
+          },
+        }
+      : {}),
+  };
 
   if (existsSync(packageJsonPath)) {
     console.log(locale.flow.updatePackage);
@@ -72,7 +84,7 @@ export const createPackageJson = async ({
       readFileSync(packageJsonPath, { encoding: "utf-8" }),
     );
 
-    deepAssign(packageContent, { scripts, devDependencies });
+    deepAssign(packageContent, newContent);
 
     writeFileSync(
       packageJsonPath,
@@ -112,8 +124,7 @@ export const createPackageJson = async ({
       version,
       license,
       type: "module",
-      scripts,
-      devDependencies,
+      ...newContent,
     };
 
     writeFileSync(

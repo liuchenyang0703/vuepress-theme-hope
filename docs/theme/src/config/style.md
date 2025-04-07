@@ -27,10 +27,9 @@ Responsive breakpoints:
 - `$tablet`
 - `$mobile`
 
-Theme Colors:
+Theme Color:
 
-- `$theme-color`: primary theme color
-- `$theme-colors`: theme colors you want to use besides primary theme color
+- `$theme-color`: theme color, multiple colors and even light/dark maps are supported.
 
 Code block (Only available with shiki):
 
@@ -165,6 +164,7 @@ Sidebar:
 Content:
 
 - `$content-width`: width of main content
+- `$wide-content-width`: width of main content in wide screens (screen width >= 1920px)
 - `$home-page-width`: width of homepage content
 
 ::: details Demo

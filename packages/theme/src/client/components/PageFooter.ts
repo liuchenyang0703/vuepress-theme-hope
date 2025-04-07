@@ -22,24 +22,21 @@ export default defineComponent({
     const frontmatter = usePageFrontmatter<ThemeNormalPageFrontmatter>();
     const author = usePageAuthor();
 
-    const enable = computed(() => {
+    const enabled = computed(() => {
       const { copyright, footer } = frontmatter.value;
 
       return (
+        // footer is not disabled
         footer !== false &&
         // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
         Boolean(copyright || footer || themeLocale.value.displayFooter)
       );
     });
 
-    const content = computed(() => {
+    const footer = computed(() => {
       const { footer } = frontmatter.value;
 
-      return footer === false
-        ? false
-        : isString(footer)
-          ? footer
-          : (themeLocale.value.footer ?? "");
+      return isString(footer) ? footer : (themeLocale.value.footer ?? "");
     });
 
     const authorText = computed(() =>
@@ -68,10 +65,10 @@ export default defineComponent({
     });
 
     return (): VNode | null =>
-      enable.value
+      enabled.value
         ? h("footer", { class: "vp-footer-wrapper", "vp-footer": "" }, [
-            content.value
-              ? h("div", { class: "vp-footer", innerHTML: content.value })
+            footer.value
+              ? h("div", { class: "vp-footer", innerHTML: footer.value })
               : null,
             copyright.value
               ? h("div", {

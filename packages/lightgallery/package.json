@@ -1,6 +1,6 @@
 {
   "name": "vuepress-plugin-lightgallery",
-  "version": "2.0.0-rc.72",
+  "version": "2.0.0-rc.78",
   "description": "Light Gallery plugin for VuePress",
   "keywords": [
     "vuepress",
@@ -48,7 +48,7 @@
   "dependencies": {
     "@vuepress/helper": "catalog:vuepress",
     "@vuepress/plugin-sass-palette": "catalog:vuepress",
-    "lightgallery": "^2.8.2",
+    "lightgallery": "^2.8.3",
     "vue": "catalog:range",
     "vuepress-shared": "workspace:*"
   },
@@ -70,7 +70,7 @@
     }
   },
   "engines": {
-    "node": ">=18.19.0",
+    "node": "^18.19.0 || >= 20.6.0",
     "npm": ">=8",
     "pnpm": ">=7",
     "yarn": ">=2"

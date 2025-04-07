@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file. See [Conven
 
 <!-- #region recent-change -->
 
+## [2.0.0-rc.78](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.77...v2.0.0-rc.78) (2025-04-02)
+
+**Note:** Version bump only for package vuepress-plugin-components
+
+<!-- #region recent-change -->
+
+## [2.0.0-rc.76](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.75...v2.0.0-rc.76) (2025-03-27)
+
+**Note:** Version bump only for package vuepress-plugin-components
+
+## [2.0.0-rc.75](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.74...v2.0.0-rc.75) (2025-03-23)
+
+**Note:** Version bump only for package vuepress-plugin-components
+
+## [2.0.0-rc.74](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-03-06)
+
+### ✨ Features
+
+- **components:** support multiple repos ([ac7cf65](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/ac7cf657a615b31380cee1a978ade3c02b9b8509))
+- improve rtl ([31c8ac7](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/31c8ac7bc546a36ff758160d66c460e7c89b60c0))
+
 ## [2.0.0-rc.72](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.71...v2.0.0-rc.72) (2025-02-23)
 
 ### ⚠ BREAKING CHANGES
@@ -18,8 +39,6 @@ All notable changes to this project will be documented in this file. See [Conven
 
 - **components:** support embedded in devServer, close [#4726](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/4726) ([f2bad79](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/f2bad7916de596edfe5b7cf2ebb9aabf21a75995))
 - **theme:** fix icon plugin support ([dd4a894](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/dd4a894b10f01e01af9414c2682f26ac08bc9747))
-
-<!-- #region recent-change -->
 
 ## [2.0.0-rc.71](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-24)
 

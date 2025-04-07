@@ -2,7 +2,7 @@ import type { ThemeData as DefaultThemeData } from "@vuepress/plugin-theme-data"
 
 import type { AppearanceConfig, AppearanceOptions } from "./appearance.js";
 import type { FeatureConfig, FeatureOptions } from "./feature/index.js";
-import type { InfoOptions } from "./info.js";
+import type { InfoConfig, InfoOptions } from "./info.js";
 import type { LayoutOptions } from "./layout/index.js";
 import type { ThemeLocaleConfig, ThemeLocaleOptions } from "./locales.js";
 import type { MarkdownOptions } from "./markdown.js";
@@ -27,11 +27,18 @@ export interface ThemeOptions
    * 主题插件选项
    */
   plugins?: PluginsOptions;
+
+  /**
+   * @experimental Headers are forced removed by theme, while you can use this option to preserve them
+   */
+  preserveHeaders?: boolean;
 }
 
-export interface ThemeData
-  extends AppearanceConfig,
-    FeatureConfig,
-    InfoOptions {
+export interface ThemeData extends AppearanceConfig, FeatureConfig, InfoConfig {
   locales: Record<string, ThemeLocaleConfig>;
+
+  /**
+   * @experimental Headers are forced removed by theme, while you can use this option to preserve them
+   */
+  preserveHeaders?: boolean;
 }

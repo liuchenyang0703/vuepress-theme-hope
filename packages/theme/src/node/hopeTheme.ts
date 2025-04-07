@@ -4,8 +4,9 @@ import type { ThemeFunction } from "vuepress/core";
 import { TEMPLATE_RENDERER_OUTLETS } from "vuepress/utils";
 
 import {
-  checkMarkdownOptions,
+  checkThemeMarkdownOptions,
   checkUserPlugins,
+  checkVuePressMarkdownOptions,
   checkVuePressVersion,
 } from "./check/index.js";
 import { checkLegacyStyle, convertThemeOptions } from "./compact/index.js";
@@ -72,6 +73,7 @@ export const hopeTheme = (
     const themeData = getThemeData(app, themeOptions, status);
     const icons = status.enableBlog ? getSocialMediaIcons(themeData) : null;
 
+    checkVuePressMarkdownOptions(app.options.markdown, markdown);
     usePlugins(app, themeData, markdown, plugins, hotReload, behaviorOptions);
 
     if (isDebug) logger.info("Plugin options:", plugins);
@@ -97,8 +99,7 @@ export const hopeTheme = (
       extendsBundlerOptions,
 
       extendsMarkdownOptions: (markdownOptions): void => {
-        if (behaviorOptions.check)
-          checkMarkdownOptions(markdownOptions, themeData);
+        checkThemeMarkdownOptions(markdownOptions, markdown);
       },
 
       onInitialized: (app): void => {

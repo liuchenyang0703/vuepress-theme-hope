@@ -29,11 +29,11 @@ export const usePlugins = (
   behavior: HopeThemeBehaviorOptions,
 ): void => {
   // Respect git options
-  if (plugins.git) useGitPlugin(app, plugins.git);
+  if (plugins.git) useGitPlugin(app, plugins.git, themeData);
   // Only use git plugin in production or debug mode
-  else if (hotReload || app.env.isBuild) useGitPlugin(app, true);
+  else if (hotReload || app.env.isBuild) useGitPlugin(app, true, themeData);
 
-  if (plugins.readingTime !== false)
+  if (plugins.readingTime ?? true)
     useReadingTimePlugin(
       app,
       isPlainObject(plugins.readingTime) ? plugins.readingTime : {},
@@ -42,7 +42,7 @@ export const usePlugins = (
   if (isPlainObject(highlighter)) {
     if (highlighter.type === "prismjs") usePrismjsPlugin(app, highlighter);
     else useShikiPlugin(app, highlighter);
-  } else if (highlighter !== false) {
+  } else if (highlighter ?? true) {
     if (highlighter === "prismjs") {
       usePrismjsPlugin(app);
     } else {

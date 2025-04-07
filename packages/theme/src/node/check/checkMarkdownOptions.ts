@@ -1,88 +1,156 @@
-import { isArray, values } from "@vuepress/helper";
-import type { HeadersPluginOptions, MarkdownOptions } from "vuepress/markdown";
+import { keys } from "@vuepress/helper";
+import type { MarkdownOptions as VuePressMarkdownOptions } from "vuepress/markdown";
 import { colors } from "vuepress/utils";
 
-import type { ThemeData } from "../../shared/index.js";
+import type { MarkdownOptions as ThemeMarkdownOptions } from "../../shared/index.js";
 import { logger } from "../utils.js";
 
-export const checkMarkdownOptions = (
-  markdownOptions: MarkdownOptions,
-  themeData: ThemeData,
+export const KNOWN_CORE_MARKDOWN_OPTIONS = [
+  "anchor",
+  "assets",
+  "component",
+  "emoji",
+  "frontmatter",
+  "headers",
+  "title",
+  "importCode",
+  "links",
+  "sfc",
+  "slugify",
+  "toc",
+  "vPre",
+];
+
+export const KNOWN_THEME_MARKDOWN_OPTIONS = [
+  // plugin-links-check
+  "linksCheck",
+
+  // plugin-markdown-ext
+  "gfm",
+  "breaks",
+  "linkify",
+  "footnote",
+  "tasklist",
+  "component",
+  "vPre",
+
+  // plugin-markdown-hint
+  "alert",
+  "hint",
+
+  // plugin-markdown-image
+  "figure",
+  "imgLazyload",
+  "imgMark",
+  "imgSize",
+  "obsidianImgSize",
+
+  // plugin-markdown-include
+  "include",
+
+  // plugin-markdown-stylize
+  "align",
+  "attrs",
+  "sup",
+  "sub",
+  "mark",
+  "spoiler",
+  "stylize",
+
+  // plugin-markdown-tab
+  "tabs",
+  "codeTabs",
+
+  // plugin-markdown-math
+  "math",
+
+  // plugin-prismjs and plugin-shiki
+  "highlighter",
+
+  // plugin-revealjs
+  "revealjs",
+
+  // vuepress-plugin-md-enhance
+  "chartjs",
+  "echarts",
+  "flowchart",
+  "markmap",
+  "mermaid",
+  "plantuml",
+  "demo",
+  "playground",
+  "kotlinPlayground",
+  "vuePlayground",
+  "sandpack",
+];
+
+/**
+ * @private
+ *
+ * Check vuepress markdown options for noob users
+ */
+export const checkVuePressMarkdownOptions = (
+  vuepressMarkdownOptions: VuePressMarkdownOptions,
+  themeMarkdownOptions: ThemeMarkdownOptions,
 ): void => {
-  const headerDepth =
-    values(themeData.locales)
-      .map(({ headerDepth }) => headerDepth)
-      .sort((a = 2, b = 2) => b - a)
-      .pop() ?? 2;
+  keys(vuepressMarkdownOptions).forEach((key) => {
+    if (!KNOWN_CORE_MARKDOWN_OPTIONS.includes(key)) {
+      if (KNOWN_THEME_MARKDOWN_OPTIONS.includes(key)) {
+        logger.warn(
+          `You are setting "${colors.magenta(
+            `markdown.${key}`,
+          )}" option in ${colors.cyan(
+            "vuepress config file",
+          )}, but it's not supported by VuePress. You need to set the option in ${colors.cyan("theme options")}.`,
+        );
 
-  // Check anchor level
-  if (markdownOptions.anchor) {
-    const { level } = markdownOptions.anchor;
-
-    if (
-      typeof level === "number" ||
-      (isArray(level) &&
-        Array.from({ length: headerDepth + 1 }, (_, index) => index + 1).some(
-          (_, index) => !level.includes(index + 1),
-        ))
-    ) {
-      logger.warn(
-        `Max ${colors.magenta(
-          "headerDepth",
-        )} is ${headerDepth}, but ${colors.magenta(
-          "markdown.anchor.level",
-        )} is ${JSON.stringify(
-          level,
-        )}, which does not extract header level ${headerDepth}.`,
-      );
-
-      markdownOptions.anchor.level = Array.from(
-        { length: headerDepth + 1 },
-        (_, index) => index + 1,
-      );
+        // @ts-expect-error: we are sure that the key exists in themeMarkdownOptions
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        themeMarkdownOptions[key] = vuepressMarkdownOptions[key];
+      } else {
+        logger.warn(
+          `You are setting "${colors.magenta(
+            `markdown.${key}`,
+          )}" option in ${colors.cyan(
+            "vuepress config file",
+          )}, but it's not supported by VuePress.`,
+        );
+      }
     }
-  } else if (markdownOptions.anchor === false && headerDepth !== 0) {
-    logger.error(
-      `MarkdownIt anchor plugin is disabled, which will not extract any header. You should enable it.`,
-    );
+  });
+};
 
-    delete markdownOptions.anchor;
-  }
-
-  // Check headers level
-  if (markdownOptions.headers === false) {
-    if (headerDepth !== 0) {
-      logger.error(
-        `MarkdownIt header plugin is disabled, which will not extract any header. You should enable it.`,
-      );
-
-      markdownOptions.headers = {
-        level: Array.from({ length: headerDepth }, (_, index) => index + 2),
-      };
+/**
+ * @private
+ *
+ * Check theme plugin options for noob users
+ */
+export const checkThemeMarkdownOptions = (
+  vuepressMarkdownOptions: VuePressMarkdownOptions,
+  themeMarkdownOptions: ThemeMarkdownOptions,
+): void => {
+  keys(themeMarkdownOptions).forEach((key) => {
+    if (!KNOWN_THEME_MARKDOWN_OPTIONS.includes(key)) {
+      if (KNOWN_CORE_MARKDOWN_OPTIONS.includes(key)) {
+        logger.warn(
+          `You are setting "${colors.magenta(
+            `markdown.${key}`,
+          )}" option in ${colors.cyan(
+            "theme options",
+          )}, but it's not supported by theme. You need to set the option in ${colors.cyan("vuepress config file")}.`,
+        );
+        // @ts-expect-error: we are sure that the key exists in vuepressMarkdownOptions
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        vuepressMarkdownOptions[key] = themeMarkdownOptions[key];
+      } else {
+        logger.warn(
+          `You are setting "${colors.magenta(
+            `markdown.${key}`,
+          )}" option in ${colors.cyan(
+            "theme options",
+          )}, but it's not supported by theme.`,
+        );
+      }
     }
-  } else {
-    const { level = [2, 3] } = (markdownOptions.headers ??=
-      {}) as HeadersPluginOptions;
-
-    if (
-      Array.from({ length: headerDepth }, (_, index) => index + 2).some(
-        (item) => !level.includes(item),
-      )
-    ) {
-      logger.warn(
-        `Max ${colors.magenta(
-          "headerDepth",
-        )} is ${headerDepth}, but ${colors.magenta(
-          "markdown.headers.level",
-        )} is ${JSON.stringify(
-          level,
-        )}, which does not extract header level ${headerDepth}.`,
-      );
-
-      markdownOptions.headers.level = Array.from(
-        { length: headerDepth },
-        (_, index) => index + 2,
-      );
-    }
-  }
+  });
 };

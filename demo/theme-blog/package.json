@@ -8,10 +8,10 @@
   "scripts": {
     "demo:serve": "http-server -a localhost dist -o",
     "demo:vite-build": "vuepress-vite build src",
-    "demo:vite-clean-dev": "vuepress-vite dev src --clean-cache",
+    "demo:vite-clean-dev": "vuepress-vite dev src --clean-cache --clean-temp",
     "demo:vite-dev": "vuepress-vite dev src",
     "demo:webpack-build": "vuepress-webpack build src",
-    "demo:webpack-clean-dev": "vuepress-webpack dev src --clean-cache",
+    "demo:webpack-clean-dev": "vuepress-webpack dev src --clean-cache --clean-temp",
     "demo:webpack-dev": "vuepress-webpack dev src"
   },
   "devDependencies": {
@@ -21,7 +21,7 @@
     "@vuepress/helper": "catalog:vuepress",
     "@vuepress/plugin-docsearch": "catalog:vuepress",
     "@vuepress/plugin-revealjs": "catalog:vuepress",
-    "@waline/client": "3.5.5",
+    "@waline/client": "3.5.6",
     "chart.js": "4.4.8",
     "echarts": "5.6.0",
     "katex": "0.16.21",

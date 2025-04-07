@@ -10,7 +10,6 @@ import type {
   ThemePageData,
   ThemeProjectHomePageFrontmatter,
 } from "../../shared/index.js";
-import { PageInfo } from "../../shared/index.js";
 import { checkFrontmatter } from "../check/index.js";
 import { convertFrontmatter } from "../compact/index.js";
 import type { HopeThemeBehaviorOptions } from "../typings/index.js";
@@ -27,35 +26,33 @@ export const injectPageInfo = (page: Page<ThemePageData>): void => {
     | ThemeNormalPageFrontmatter;
 
   // Set title
-  page.routeMeta[PageInfo.title] = page.title;
+  page.routeMeta.title = page.title;
 
   // Set short title
   if (frontmatter.shortTitle)
-    page.routeMeta[PageInfo.shortTitle] = frontmatter.shortTitle;
+    page.routeMeta.shortTitle = frontmatter.shortTitle;
 
   // Set icon
-  if (frontmatter.icon) page.routeMeta[PageInfo.icon] = frontmatter.icon;
+  if (frontmatter.icon) page.routeMeta.icon = frontmatter.icon;
 
   // Catalog related
   if (endsWith(page.path, "/")) {
     if (isPlainObject(frontmatter.dir)) {
       if ("order" in frontmatter.dir)
-        page.routeMeta[PageInfo.order] = (
+        page.routeMeta.order = (
           frontmatter.dir as StructureSidebarDirOptions
         ).order;
 
       if ((frontmatter as ThemeNormalPageFrontmatter).dir?.index === false)
-        page.routeMeta[PageInfo.index] = false;
+        page.routeMeta.index = false;
     }
   } else {
-    if ("order" in frontmatter)
-      page.routeMeta[PageInfo.order] = frontmatter.order;
-    if (frontmatter.index === false) page.routeMeta[PageInfo.index] = false;
+    if ("order" in frontmatter) page.routeMeta.order = frontmatter.order;
+    if (frontmatter.index === false) page.routeMeta.index = false;
   }
 
   // breadcrumb
-  if (frontmatter.breadcrumbExclude)
-    page.routeMeta[PageInfo.breadcrumbExclude] = true;
+  if (frontmatter.breadcrumbExclude) page.routeMeta.breadcrumbExclude = true;
 };
 
 export const extendsPagePlugin = (
@@ -96,6 +93,10 @@ export const extendsPagePlugin = (
       if (enableEditLink)
         // Save relative file path into page data to generate edit link
         (page as Page<ThemePageData>).data.filePathRelative = filePathRelative;
+
+      // remove page headers
+      // @ts-expect-error: header are required in vuepress/core
+      if (!themeData.preserveHeaders) delete page.data.headers;
 
       injectPageInfo(page as Page<ThemePageData>);
       injectLocalizedDate(page);

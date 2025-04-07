@@ -11,8 +11,6 @@ import {
 } from "@theme-hope/modules/blog/composables/index";
 import TOC from "@theme-hope/modules/info/components/TOC";
 
-import { PageInfo } from "../../../../shared/index.js";
-
 import "../styles/timeline-items.scss";
 
 export default defineComponent({
@@ -48,7 +46,7 @@ export default defineComponent({
           timelines.value.config.map(({ year, items }, index) =>
             h(
               DropTransition,
-              { appear: true, delay: 0.08 * (index + 1), type: "group" },
+              { appear: true, delay: 0.08 * (index + 1), group: true },
               () => [
                 h(
                   "h3",
@@ -68,7 +66,7 @@ export default defineComponent({
                             class: "timeline-title",
                             to: path,
                           },
-                          () => info[PageInfo.title],
+                          () => info.title,
                         ),
                       ]),
                     ),

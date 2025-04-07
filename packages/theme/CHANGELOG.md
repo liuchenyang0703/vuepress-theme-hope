@@ -4,6 +4,81 @@ All notable changes to this project will be documented in this file. See [Conven
 
 <!-- #region recent-change -->
 
+## [2.0.0-rc.78](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.77...v2.0.0-rc.78) (2025-04-02)
+
+### ✨ Features
+
+- **theme:** use Message from helper ([b3b3ccf](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/b3b3ccf895d27f744a24342ab71a130cf52cde3e))
+- use transition style from helper ([e23908e](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/e23908e49f369e8acf4d53a17e6ec91d22049ab0))
+
+<!-- #region recent-change -->
+
+## [2.0.0-rc.77](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.76...v2.0.0-rc.77) (2025-03-28)
+
+### ✨ Features
+
+- **theme:** remove $theme-colors ([0266670](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/02666704c3e6e61562dc05e0a86472c2c93951ad))
+
+### 🐛 Bug Fixes
+
+- **theme:** fix lastUpdated, close [#4816](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/4816) ([d671081](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/d67108100690d3448638d8d31598df4be96b1aec))
+- **theme:** fix toc style ([a514ed0](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/a514ed0cec124478fbf1cb1cbe51f8ccdf7c148e))
+
+<!-- #region recent-change -->
+
+## [2.0.0-rc.76](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.75...v2.0.0-rc.76) (2025-03-27)
+
+### 🐛 Bug Fixes
+
+- **theme:** disable changelog and contributors on home page by default ([56d595a](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/56d595adef8479d1d1150b6b4c0cd1d75a870c5b))
+- **theme:** fix footer ([e7789d2](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/e7789d28cbed8bcfa5dcc21cef063d2292dd7702))
+- **theme:** fix markdown-content style ([5fc7639](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/5fc7639fbe007606df051ed98adfc29d8ace8883))
+- **theme:** fix wide screen appearance ([31ebb5e](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/31ebb5e0ee9747cbc9f3ebdf41475c9e5280de21))
+
+## [2.0.0-rc.75](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.74...v2.0.0-rc.75) (2025-03-23)
+
+### ✨ Features
+
+- **theme:** add $pc-content-width ([5591fc1](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/5591fc1beca7fa4870c5963ccc964c61bd51c64f))
+- **theme:** add support for changelog and contributor components ([76d917b](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/76d917b2a03c0f215dd14c13a87686bd93671048))
+
+### 🐛 Bug Fixes
+
+- **theme:** fix article info, close [#4800](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/4800) ([0081122](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/008112258a0ac527fdc39c0af8c65da251cc6c99))
+- **theme:** fix catalog icon ([91dd0b5](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/91dd0b54c82b3b408f76c44028bf4a79233808f9))
+- **theme:** fix displayFooter option ([e72bd52](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/e72bd52a27718a09dd73696fcde404c199b14941))
+- **theme:** fix git plugin ([1b54351](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/1b543518aea70ee6f500741ab64b833a3e98d8e8))
+- **theme:** fix global encrypt, close [#4803](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/4803) ([8f67d52](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/8f67d529d51dc15cc83ddeacde6091d8fbb1843c))
+- **theme:** fix setupTransparentNavbar ([4bfb1ab](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/4bfb1ab195e8701831cbfcd3014c7376184ad6fa))
+
+## [2.0.0-rc.74](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-03-06)
+
+### ✨ Features
+
+- improve rtl ([31c8ac7](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/31c8ac7bc546a36ff758160d66c460e7c89b60c0))
+- **theme:** disable darkmode while print ([cfa4dab](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/cfa4dabf2996d4f40d19b1ccdbc294f9e03176c3))
+- **theme:** improve option check ([0e4e3c7](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/0e4e3c79478b55da0903a0ca5ddb30797d26cbe2))
+
+### 🐛 Bug Fixes
+
+- **theme:** fix PageInfo ,close [#4772](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/4772) ([4ce1c21](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/4ce1c211ea4dda20c42e0002c6632f4b26c84ebd))
+- **theme:** ignore badge in toc ([4af4c76](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/4af4c767ca82d00391c3e3edabee4a0ee2e36204))
+
+## [2.0.0-rc.73](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.72...v2.0.0-rc.73) (2025-02-24)
+
+### ⚠ BREAKING CHANGES
+
+- **theme:** remove enums
+
+### ✨ Features
+
+- **theme:** prefer useHeaders and remove headers from page data ([f91f0cb](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/f91f0cbfbac0796ae102550d1abc35501577d21e))
+- **theme:** remove enums ([5d9d629](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/5d9d6291bcb8777001370a3927f215bde1ac4356))
+
+### 🐛 Bug Fixes
+
+- **theme:** fix navigate with hash and query ([233d320](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/233d320134787d1479f17ad71a7dc8b8521acb60))
+
 ## [2.0.0-rc.72](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.71...v2.0.0-rc.72) (2025-02-23)
 
 ### ⚠ BREAKING CHANGES
@@ -19,8 +94,6 @@ All notable changes to this project will be documented in this file. See [Conven
 ### 🐛 Bug Fixes
 
 - **theme:** fix icon plugin support ([dd4a894](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/dd4a894b10f01e01af9414c2682f26ac08bc9747))
-
-<!-- #region recent-change -->
 
 ## [2.0.0-rc.71](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-24)
 
@@ -40,8 +113,6 @@ All notable changes to this project will be documented in this file. See [Conven
 - **theme:** fix icon sizing ([d0dde2e](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/d0dde2e15ed684df1d755ada720e084fe394e8a2))
 - **theme:** fix InfoPanel animation ([f7910da](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/f7910da9fb34643467fe0a31c242a812ebae8460))
 - **theme:** fix type typos ([02ac3f3](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/02ac3f37917e15fcb738fcec0cda3e3425ac8718))
-
-<!-- #region recent-change -->
 
 ## [2.0.0-rc.70](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-16)
 
