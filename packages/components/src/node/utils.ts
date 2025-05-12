@@ -24,11 +24,9 @@ export const AVAILABLE_COMPONENTS: (
   "VPBanner",
   "VPCard",
   "VidStack",
-  "XiGua",
 
   // deprecated
   "AudioPlayer",
-  "Replit",
   "VideoPlayer",
   "YouTube",
 ];

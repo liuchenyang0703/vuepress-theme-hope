@@ -9,7 +9,7 @@ import {
   ref,
   shallowRef,
 } from "vue";
-import { ClientOnly, usePageLang } from "vuepress/client";
+import { ClientOnly, useLang } from "vuepress/client";
 
 import "@vuepress/helper/transition/fade-in.css";
 import "./bing-hero-background.scss";
@@ -49,7 +49,7 @@ export default defineComponent({
    */
 
   setup() {
-    const lang = usePageLang();
+    const lang = useLang();
     const bingInfo = shallowRef<HTMLElement>();
     const showInfo = ref(false);
 
@@ -73,7 +73,7 @@ export default defineComponent({
       return null;
     });
 
-    const getImage = (): Promise<BingWallpaperInfo[]> =>
+    const getBingWallpapers = (): Promise<BingWallpaperInfo[]> =>
       fetch("https://bing-wallpaper.vuejs.press/api/wallpaper").then(
         (response) => response.json() as Promise<BingWallpaperInfo[]>,
       );
@@ -90,10 +90,8 @@ export default defineComponent({
       showInfo.value = false;
     });
 
-    onMounted(() => {
-      void getImage().then((res) => {
-        bingStorage.value.data = res;
-      });
+    onMounted(async () => {
+      bingStorage.value.data = await getBingWallpapers();
     });
 
     return (): VNode => {

@@ -3,7 +3,7 @@ title: Stylize
 icon: code
 dir:
   collapsible: false
-  order: 3
+  order: 4
   link: true
 category:
   - Markdown
@@ -16,7 +16,7 @@ The theme provides the following features to stylize your content:
 
 - Hint Container: Stylized hint
 - Align: Customize content alignment
-- Attrs: Adding attrs to markdown contents
+- Attrs: Adding attrs to Markdown contents
 - Mark: Highlight contents
 - Superscript and Subscript
 - Spoiler: Hide spoiler content

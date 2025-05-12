@@ -1,37 +1,29 @@
 import { getDate } from "@vuepress/helper/client";
 import type { GitData } from "@vuepress/plugin-git";
-import type { ReadingTime } from "@vuepress/plugin-reading-time/client";
 import {
   useReadingTimeData,
   useReadingTimeLocale,
 } from "@vuepress/plugin-reading-time/client";
 import type { ComputedRef } from "vue";
 import { computed, inject } from "vue";
-import { usePageData, usePageFrontmatter } from "vuepress/client";
-import type { AuthorInfo, BasePageFrontMatter } from "vuepress-shared/client";
-import { getAuthor, getCategory, getTag } from "vuepress-shared/client";
+import { useFrontmatter } from "vuepress/client";
 
-import type {
-  CategoryMapRef,
-  TagMapRef,
-} from "@theme-hope/modules/blog/composables/index";
-import type { PageInfoProps } from "@theme-hope/modules/info/components/PageInfo";
-import type {
-  PageCategory,
-  PageTag,
-} from "@theme-hope/modules/info/utils/index";
+import type { PageInfoProps } from "@theme-hope/components/info/PageInfo";
+import type { CategoryMapRef } from "@theme-hope/composables/blog/useCategoryMap";
+import type { TagMapRef } from "@theme-hope/composables/blog/useTagMap";
+import { useData } from "@theme-hope/composables/useData";
+import type { PageCategory, PageTag } from "@theme-hope/utils/info/typings";
 
 import { useAuthorInfo } from "./useAuthorInfo.js";
-import { useThemeLocaleData } from "./useThemeData.js";
 import type {
+  AuthorInfo,
   PageInfoType,
-  ThemeNormalPageFrontmatter,
+  ThemeBasePageFrontmatter,
 } from "../../shared/index.js";
-
-declare const __VP_BLOG__: boolean;
+import { getAuthor, getCategory, getTag } from "../../shared/index.js";
 
 export const usePageAuthor = (): ComputedRef<AuthorInfo[]> => {
-  const frontmatter = usePageFrontmatter<BasePageFrontMatter>();
+  const frontmatter = useFrontmatter<ThemeBasePageFrontmatter>();
   const authorInfo = useAuthorInfo();
 
   return computed(() => {
@@ -45,10 +37,11 @@ export const usePageAuthor = (): ComputedRef<AuthorInfo[]> => {
 };
 
 export const usePageCategory = (): ComputedRef<PageCategory[]> => {
-  const frontmatter = usePageFrontmatter<BasePageFrontMatter>();
-  const categoryMap = __VP_BLOG__
-    ? inject<CategoryMapRef>(Symbol.for("categoryMap"))
-    : null;
+  const frontmatter = useFrontmatter<ThemeBasePageFrontmatter>();
+  const categoryMap = inject<CategoryMapRef | null>(
+    Symbol.for("categoryMap"),
+    null,
+  );
 
   return computed(() =>
     getCategory(frontmatter.value.category ?? frontmatter.value.categories).map(
@@ -61,8 +54,8 @@ export const usePageCategory = (): ComputedRef<PageCategory[]> => {
 };
 
 export const usePageTag = (): ComputedRef<PageTag[]> => {
-  const frontmatter = usePageFrontmatter<BasePageFrontMatter>();
-  const tagMap = __VP_BLOG__ ? inject<TagMapRef>(Symbol.for("tagMap")) : null;
+  const frontmatter = useFrontmatter<ThemeBasePageFrontmatter>();
+  const tagMap = inject<TagMapRef | null>(Symbol.for("tagMap"), null);
 
   return computed(() =>
     getTag(frontmatter.value.tag ?? frontmatter.value.tags).map((name) => ({
@@ -73,8 +66,10 @@ export const usePageTag = (): ComputedRef<PageTag[]> => {
 };
 
 export const usePageDate = (): ComputedRef<Date | null> => {
-  const frontmatter = usePageFrontmatter<BasePageFrontMatter>();
-  const page = usePageData<{ git?: GitData }>();
+  const { frontmatter, page } = useData<
+    ThemeBasePageFrontmatter,
+    { git?: GitData }
+  >();
 
   return computed(() => {
     const date = getDate(frontmatter.value.date);
@@ -93,13 +88,7 @@ export const usePageInfo = (): {
   info: ComputedRef<PageInfoProps>;
   items: ComputedRef<PageInfoType[] | false | null>;
 } => {
-  const themeLocale = useThemeLocaleData();
-  const page = usePageData<{
-    git?: GitData;
-    localizedDate: string;
-    readingTime?: ReadingTime;
-  }>();
-  const frontmatter = usePageFrontmatter<ThemeNormalPageFrontmatter>();
+  const { frontmatter, themeLocale } = useData();
   const author = usePageAuthor();
   const category = usePageCategory();
   const tag = usePageTag();
@@ -113,7 +102,6 @@ export const usePageInfo = (): {
         author: author.value,
         category: category.value,
         date: date.value,
-        localizedDate: page.value.localizedDate,
         tag: tag.value,
         isOriginal: frontmatter.value.isOriginal ?? false,
         readingTime: readingTimeData.value,

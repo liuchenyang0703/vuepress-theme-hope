@@ -16,7 +16,7 @@ This tutorial guides you on how to generate page in a VuePress project.
 
 ## Generating Pages
 
-VuePress is markdown-centered. Each Markdown file inside your project is a standalone page.
+VuePress is Markdown-Centered. Each Markdown file inside your project is a standalone page.
 
 By default, the route path of a page is determined by the relative path of your Markdown file.
 
@@ -41,7 +41,7 @@ The route path of your Markdown files are:
 | `/demo/README.md` | `/demo/`          |
 | `/demo/page.md`   | `/demo/page.html` |
 
-::: tip README.md
+::: tip README\.md
 
 `README.md` is a special case. In Markdown, by convention, it will be used as the home page of the folder where it is located. So when it is rendered as a web page, its corresponding path is the home page path `index.html` in the web page.
 

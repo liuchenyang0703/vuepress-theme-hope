@@ -256,7 +256,7 @@ highlights:
       - title: 代码块
         icon: code
         details: 自定义代码块主题、行号、行高亮、复制按钮等
-        link: https://theme-hope.vuejs.press/zh/guide/markdown/code/fence.html.html
+        link: https://theme-hope.vuejs.press/zh/guide/markdown/code/fence.html
 
       - title: 图片预览
         icon: image
@@ -323,4 +323,4 @@ footer: 使用 <a href="https://theme-hope.vuejs.press/zh/" target="_blank">VueP
 
 想要使用此布局，你需要在页面 front matter 中设置 `home: true`。
 
-配置项的相关说明详见 [项目主页配置](https://theme-hope.vuejs.press/zh/guide/layout/home/)。
+配置项的相关说明详见 [项目主页配置](https://theme-hope.vuejs.press/zh/guide/layout/home.html)。

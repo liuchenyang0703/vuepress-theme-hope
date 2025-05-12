@@ -1,5 +1,6 @@
 import type { ReadingTime } from "@vuepress/plugin-reading-time";
-import type { Author } from "vuepress-shared";
+
+import type { Author } from "./author.js";
 
 export type PageType = "article" | "home" | "slide" | "page";
 
@@ -47,11 +48,6 @@ export interface ArticleInfoData extends PageInfoData {
    * Writing date info
    */
   date?: number;
-
-  /**
-   * Writing date info in current language
-   */
-  localizedDate?: string;
 
   /**
    * Article category

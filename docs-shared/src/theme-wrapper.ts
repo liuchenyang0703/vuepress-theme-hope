@@ -54,6 +54,7 @@ export const theme = (
 
     pageInfo: ["ReadingTime", "Category", "Tag"],
     changelog: true,
+    contributors: "content",
 
     markdown: {
       highlighter: {
@@ -146,5 +147,5 @@ export const theme = (
     ...options,
   };
 
-  return hopeTheme(themeOptions, { custom: true });
+  return hopeTheme(themeOptions);
 };

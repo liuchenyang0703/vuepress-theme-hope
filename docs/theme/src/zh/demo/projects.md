@@ -307,8 +307,8 @@ docs:
 
   - name: Warm-Flow
     desc: Warm-Flow工作流
-    logo: http://www.warm-flow.cn/logo.png
-    url: http://www.warm-flow.cn
+    logo: https://warm-flow.dromara.org/logo.png
+    url: https://warm-flow.dromara.org
     repo: https://github.com/dromara/warm-flow
     preview: /assets/image/warm-flow.png
 
@@ -324,6 +324,13 @@ docs:
     url: https://sixflowers.icu/
     repo: https://github.com/dmmdekkd
     preview: https://sixflowers.icu/4.jpg
+
+  - name: 鹰歌游戏引擎文档
+    desc: 一款具有强大功能的开放式游戏制作引擎
+    logo: https://docs-mf.tasaed.top/assets/image/logo.png
+    url: https://docs-mf.tasaed.top/
+    repo: https://github.com/TASA-Ed/MakerFrameDocs
+    preview: /assets/image/docs-makerf.png
 
 portfolios:
   - name: 尚程
@@ -532,6 +539,13 @@ blogs:
     url: https://blog.erduotong.com/
     repo: https://github.com/erduotong/erduotong.github.io
     preview: https://blog.erduotong.com/blog_preview.png
+
+  - name: Pysio's Home
+    desc: 熊猫的小窝
+    logo: https://www.pysio.online/assets/imgs/avast.svg
+    url: https://www.pysio.online/
+    repo: https://github.com/pysio2007/Vue-blog
+    preview: http://s3.pysio.online/pysioimages/blog_preview.png
 ---
 
 ## 使用 VuePress Theme Hope 的文档

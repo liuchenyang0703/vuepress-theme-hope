@@ -87,7 +87,7 @@ By default, the type list path will be `/key/` (with `key` replaced by your actu
 
 ::: note
 
-`layout` is the layout name, by default it will be `BlogType`, a layout `vuepress-theme-hope` registered. ONLY IF you build a custom layout for the type list, shall you set this option to your layout value.
+`layout` is the layout name, by default it will be `Blog`, a layout `vuepress-theme-hope` registered. ONLY IF you build a custom layout for the type list, shall you set this option to your layout value.
 
 :::
 
@@ -102,46 +102,40 @@ To get start with, we would like to show you some examples.
 
 1. Adding a type of slide pages.
 
-   All slide pages should have `layout: SlidePage` in frontmatter. And the sequence doesn't matter.
+   All slide pages should have `layout: Slides` in frontmatter. And the sequence doesn't matter.
 
 1. Adding an original type.
 
 You shall set the following options:
 
-```ts twoslash
+```ts twoslash title=".vuepress/theme.ts"
 import { dateSorter } from "@vuepress/helper";
-import { defineUserConfig } from "vuepress";
 import { hopeTheme } from "vuepress-theme-hope";
 
-export default defineUserConfig({
-  // other config
-  // ...
+export default hopeTheme({
+  blogLocales: {
+    slide: "Slides",
+    original: "Original",
+  },
 
-  theme: hopeTheme({
-    blogLocales: {
-      slide: "Slides",
-      original: "Original",
+  plugins: {
+    blog: {
+      type: [
+        {
+          key: "slide",
+          filter: (page) => page.frontmatter.layout === "Slide",
+          frontmatter: () => ({ title: "Slides" }),
+        },
+        {
+          key: "original",
+          filter: (page) => !!page.frontmatter.original,
+          sorter: (pageA, pageB) =>
+            dateSorter(pageA.frontmatter.date, pageB.frontmatter.date),
+          frontmatter: () => ({ title: "Original" }),
+        },
+      ],
     },
-
-    plugins: {
-      blog: {
-        type: [
-          {
-            key: "slide",
-            filter: (page) => page.frontmatter.layout === "Slide",
-            frontmatter: () => ({ title: "Slides" }),
-          },
-          {
-            key: "original",
-            filter: (page) => !!page.frontmatter.original,
-            sorter: (pageA, pageB) =>
-              dateSorter(pageA.frontmatter.date, pageB.frontmatter.date),
-            frontmatter: () => ({ title: "Original" }),
-          },
-        ],
-      },
-    },
-  }),
+  },
 });
 ```
 

@@ -4,6 +4,74 @@ All notable changes to this project will be documented in this file. See [Conven
 
 <!-- #region recent-change -->
 
+## [2.0.0-rc.86](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.85...v2.0.0-rc.86) (2025-05-07)
+
+### ✨ Features
+
+- **theme:** update file structure and rebuild alias ([#4875](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/4875)) ([1e9f591](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/1e9f5911feafc9cfb9ef15d0bee9d7ad1355141f))
+
+<!-- #region recent-change -->
+
+## [2.0.0-rc.85](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.84...v2.0.0-rc.85) (2025-05-01)
+
+### ⚠ BREAKING CHANGES
+
+- **components:** remove replit
+
+### ✨ Features
+
+- **components:** improve banner outlook ([dcc142a](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/dcc142a6ee4ca2512c64797b63cbbb78e7a512d4))
+- **components:** improve VPBanner appearance ([a6dd390](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/a6dd390ec1cd62f1e24953ed6bf6c2f071624af8))
+- **components:** remove replit ([b331cf1](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/b331cf19aabf899ce196f091aae75631fd97efee))
+
+<!-- #region recent-change -->
+
+## [2.0.0-rc.84](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.83...v2.0.0-rc.84) (2025-04-29)
+
+**Note:** Version bump only for package vuepress-plugin-components
+
+<!-- #region recent-change -->
+
+## [2.0.0-rc.83](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.82...v2.0.0-rc.83) (2025-04-28)
+
+### ⚠ BREAKING CHANGES
+
+- drop node18 support
+
+### ✨ Features
+
+- drop node18 support ([c611b59](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/c611b59ab8a74dc641f8949c43c5f7ed4c6dd381))
+
+<!-- #region recent-change -->
+
+## [2.0.0-rc.81](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.80...v2.0.0-rc.81) (2025-04-14)
+
+### ⚠ BREAKING CHANGES
+
+- **components:** remove xigua (#4848)
+
+### ✨ Features
+
+- **components:** remove xigua ([#4848](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/4848)) ([5a8ce83](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/5a8ce83440cc40ec6341ff16c989ee694e2fa92c))
+
+### 🚀 Performance Improvements
+
+- improve webpack perf ([#4845](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/4845)) ([abe3134](https://github.com/vuepress-theme-hope/vuepress-theme-hope/commit/abe31343abd2cfd117692591e1658af7a07cbcec))
+
+<!-- #region recent-change -->
+
+## [2.0.0-rc.80](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.79...v2.0.0-rc.80) (2025-04-12)
+
+**Note:** Version bump only for package vuepress-plugin-components
+
+<!-- #region recent-change -->
+
+## [2.0.0-rc.79](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-04-09)
+
+**Note:** Version bump only for package vuepress-plugin-components
+
+<!-- #region recent-change -->
+
 ## [2.0.0-rc.78](https://github.com/vuepress-theme-hope/vuepress-theme-hope/compare/v2.0.0-rc.77...v2.0.0-rc.78) (2025-04-02)
 
 **Note:** Version bump only for package vuepress-plugin-components

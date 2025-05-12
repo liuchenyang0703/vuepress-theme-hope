@@ -251,7 +251,7 @@ highlights:
       - title: Code Block
         icon: code
         details: Customize code block themes, line number, highlight lines, copy button, etc.
-        link: https://theme-hope.vuejs.press/guide/markdown/code/fence.html.html
+        link: https://theme-hope.vuejs.press/guide/markdown/code/fence.html
 
       - title: Image Preview
         icon: image
@@ -318,4 +318,4 @@ This is an example of a project homepage. You can place your main content here.
 
 To use this layout, you need to set `home: true` in the page front matter.
 
-For related descriptions of configuration items, please see [Project HomePage Layout Config](https://theme-hope.vuejs.press/guide/layout/home/).
+For related descriptions of configuration items, please see [Project HomePage Layout Config](https://theme-hope.vuejs.press/guide/layout/home.html).

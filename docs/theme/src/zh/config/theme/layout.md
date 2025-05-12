@@ -15,7 +15,7 @@ tag:
 
 ## 导航栏相关
 
-### navbar <Badge text="建议配置" type="tip" />
+### navbar <Badge text="建议配置" type="tip" /> {#navbar-header}
 
 - 类型: `NavbarOptions | false`
 - 默认值: `false`
@@ -133,7 +133,7 @@ tag:
 
 关于配置指南，详见 [布局 → 侧边栏](../../guide/layout/sidebar.md)。
 
-### sidebar <Badge text="建议配置" type="tip" />
+### sidebar <Badge text="建议配置" type="tip" /> {#sidebar-header}
 
 - 类型: `SidebarOptions`
 - 默认值: `"structure"`
@@ -253,15 +253,6 @@ tag:
 
 ## 页面元数据
 
-### headerDepth
-
-- 类型: `number`
-- 默认值: `2`
-- 详情:
-  - [布局 → 页面](../../guide/layout/page.md#设置标题深度)
-
-侧边栏和 TOC 中的标题深度。
-
 ### pageInfo
 
 - 类型: `ArticleInfo[] | false`
@@ -296,15 +287,20 @@ tag:
 
 ### contributors
 
-- 类型: `boolean`
-- 默认值: `true`
+- 类型: `"content" | "meta" | boolean`
+- 默认值: `"meta"`
 
 是否显示页面贡献者
+
+- `"content"`: 显示在页面内容中
+- `"meta"`: 显示在页面底部的元信息中
+- `true`: 和 `"meta"` 相同
+- `false`: 不显示
 
 ### changelog
 
 - 类型: `boolean`
-- 默认值: `true`
+- 默认值: `false`
 
 是否显示变更日志
 
@@ -389,7 +385,38 @@ tag:
 
 ### toc {#toc-heading}
 
-- 类型: `boolean`
+- 类型: `GetHeadersOptions | boolean`
+
+  ```ts
+  export interface GetHeadersOptions {
+    /**
+     * 标题的选择器
+     *
+     * @default "#markdown-content >  h1, #markdown-content > h2, #markdown-content > h3, #markdown-content > h4, #markdown-content > h5, #markdown-content > h6, [vp-content] > h2"
+     */
+    selector?: string;
+    /**
+     * 忽略标题中的特定元素，应是一个 CSS 选择器数组
+     *
+     * @default [".vp-badge", ".vp-icon"]
+     */
+    ignore?: string[];
+    /**
+     * 标题的级别
+     *
+     * `1` 到 `6` 对应 `<h1>` 到 `<h6>`
+     *
+     * - `false`: 不显示标题列表
+     * - `number`: 仅显示该级别的标题
+     * - `[number, number]: 标题级别元组，第一个数字应小于第二个数字，例如 `[2, 4]`，表示显示所有 `<h2>` 到 `<h4>` 的标题。
+     * - `deep`: 和 `[2, 6]` 相同，表示显示所有 `<h2>` 到 `<h6>` 的标题。
+     *
+     * @default "deep"
+     */
+    levels?: HeaderLevels;
+  }
+  ```
+
 - 默认值: `true`
 
 是否显示标题列表

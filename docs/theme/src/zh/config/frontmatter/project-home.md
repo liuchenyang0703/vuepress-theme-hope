@@ -83,6 +83,13 @@ tag:
 
 背景图片的 CSS 样式。
 
+## heroStyle
+
+- 类型: `string`
+- 必填: 否
+
+Hero 样式。
+
 ## heroFullScreen
 
 - 类型: `boolean`

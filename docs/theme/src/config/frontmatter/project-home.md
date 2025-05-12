@@ -83,6 +83,13 @@ Link of dark mode background image, relative path is not supported.
 
 The CSS style of the background image.
 
+## heroStyle
+
+- Type: `Record<string, string> | string`
+- Required: No
+
+Hero wrapper style.
+
 ## heroFullScreen
 
 - Type: `boolean`

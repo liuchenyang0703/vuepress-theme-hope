@@ -15,7 +15,6 @@ icon: gears
     | "BiliBili"
     | "CodePen"
     | "PDF"
-    | "Replit"
     | "Share"
     | "StackBlitz"
     | "SiteInfo"
@@ -23,7 +22,6 @@ icon: gears
     | "VPCard"
     | "VidStack"
     | "VideoPlayer"
-    | "XiGua"
     | "YouTube";
   ```
 
@@ -39,7 +37,6 @@ icon: gears
 - `"BiliBili"`
 - `"CodePen"`
 - `"PDF"`
-- `"Replit"`
 - `"Share"`
 - `"StackBlitz"`
 - `"SiteInfo"`
@@ -47,7 +44,6 @@ icon: gears
 - `"VPCard"`
 - `"VidStack"`
 - `"VideoPlayer"`
-- `"XiGua"`
 - `"YouTube"`
 
 ## componentsOptions

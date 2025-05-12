@@ -24,12 +24,6 @@ export default hope(
     tsImport: {
       settings: {
         "import-x/internal-regex": "^@(?:internal|temp|theme-hope)/",
-        "import-x/resolver": {
-          typescript: {
-            alwaysTryTypes: true,
-            project: "tsconfig.json",
-          },
-        },
       },
       rules: {
         "import-x/no-absolute-path": "error",
@@ -61,12 +55,24 @@ export default hope(
       "@typescript-eslint/naming-convention": [
         "warn",
 
-        // allow path like `/zh/demo.html`, alias starting with `@` and css property like `line-width`
+        // allows
+        // - path like `/zh/demo.html`
+        // - alias starting with `@`
+        // - css property like `line-width`
         {
           selector: "property",
           format: null,
           filter: {
             regex: "(^/|^@|^[a-z]+(?:-[a-z]+)*?$)",
+            match: true,
+          },
+        },
+        // Layout and NotFound
+        {
+          selector: ["objectLiteralMethod"],
+          format: null,
+          filter: {
+            regex: "^(?:Layout|NotFound|Blog)$",
             match: true,
           },
         },
@@ -79,15 +85,12 @@ export default hope(
       "import-x/no-unresolved": [
         "error",
         {
-          ignore: [
-            "^@temp\\/",
-            "^@theme-hope\\/",
-            "^vuepress/client",
-            "^vuepress-theme-hope\\/blog\\/",
-            "^vuepress-theme-hope\\/client\\/",
-            "^vuepress-theme-hope\\/presets\\/",
-          ],
+          ignore: ["^@temp\\/"],
         },
+      ],
+      "vue/multi-word-component-names": [
+        "error",
+        { ignores: ["Blog", "Layout", "Slides"] },
       ],
     },
   }),

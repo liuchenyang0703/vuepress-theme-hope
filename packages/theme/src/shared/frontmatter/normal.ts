@@ -1,4 +1,6 @@
-import type { ThemePageFrontmatter } from "./base.js";
+import type { GetHeadersOptions } from "@vuepress/helper/shared";
+
+import type { ThemeBasePageFrontmatter } from "./base.js";
 import type { PageInfoType } from "../info.js";
 import type { AutoLinkOptions } from "../nav.js";
 
@@ -77,7 +79,7 @@ export interface StructureSidebarDirOptions {
   order?: number;
 }
 
-export interface ThemeNormalPageFrontmatter extends ThemePageFrontmatter {
+export interface ThemeNormalPageFrontmatter extends ThemeBasePageFrontmatter {
   /**
    * Whether is homepage
    *
@@ -120,13 +122,6 @@ export interface ThemeNormalPageFrontmatter extends ThemePageFrontmatter {
    * 用于导航栏，侧边栏和路径导航的短标题
    */
   shortTitle?: string;
-
-  /**
-   * Page Heading depth
-   *
-   * 页面标题深度
-   */
-  headerDepth?: number;
 
   /**
    * Whether display lastUpdated time
@@ -175,7 +170,7 @@ export interface ThemeNormalPageFrontmatter extends ThemePageFrontmatter {
    *
    * 是否在桌面模式下展示标题列表
    */
-  toc?: boolean;
+  toc?: GetHeadersOptions | boolean;
 
   /**
    * PageInfo items

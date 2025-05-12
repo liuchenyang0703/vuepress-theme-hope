@@ -96,7 +96,7 @@ tag:
 
 ::: note
 
-`layout` 是布局名称，默认为 `BlogType`，是一个 `vuepress-theme-hope` 注册的布局。 仅当你为类型列表构建自定义布局时，才应将此选项设置为你的布局值。
+`layout` 是布局名称，默认为 `Blog`，是一个 `vuepress-theme-hope` 注册的布局。 仅当你为类型列表构建自定义布局时，才应将此选项设置为你的布局值。
 
 :::
 
@@ -111,44 +111,38 @@ tag:
 
 1. 增加了一种幻灯片页面。
 
-   所有幻灯片页面都应在 frontmatter 中包含 `layout: SlidePage`。 并且顺序无关紧要。
+   所有幻灯片页面都应在 frontmatter 中包含 `layout: Slides`。 并且顺序无关紧要。
 
 1. 添加原创类型。
 
 你应设置以下选项：
 
-```ts twoslash
+```ts twoslash title=".vuepress/theme.ts"
 import { dateSorter } from "@vuepress/helper";
-import { defineUserConfig } from "vuepress";
 import { hopeTheme } from "vuepress-theme-hope";
 
-export default defineUserConfig({
-  // other config
-  // ...
+export default hopeTheme({
+  blogLocales: {
+    slide: "幻灯片",
+    original: "原创",
+  },
 
-  theme: hopeTheme({
-    blogLocales: {
-      slide: "幻灯片",
-      original: "原创",
+  plugins: {
+    blog: {
+      type: [
+        {
+          key: "slide",
+          filter: (page) => page.frontmatter.layout === "Slide",
+        },
+        {
+          key: "original",
+          filter: (page) => !!page.frontmatter.original,
+          sorter: (pageA, pageB) =>
+            dateSorter(pageA.frontmatter.date, pageB.frontmatter.date),
+        },
+      ],
     },
-
-    plugins: {
-      blog: {
-        type: [
-          {
-            key: "slide",
-            filter: (page) => page.frontmatter.layout === "Slide",
-          },
-          {
-            key: "original",
-            filter: (page) => !!page.frontmatter.original,
-            sorter: (pageA, pageB) =>
-              dateSorter(pageA.frontmatter.date, pageB.frontmatter.date),
-          },
-        ],
-      },
-    },
-  }),
+  },
 });
 ```
 

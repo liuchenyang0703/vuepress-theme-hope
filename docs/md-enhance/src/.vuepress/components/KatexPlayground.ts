@@ -1,11 +1,12 @@
 import { useLocaleConfig } from "@vuepress/helper/client";
 import { watchImmediate } from "@vueuse/core";
-import katex from "katex";
 import type { VNode } from "vue";
 import { defineComponent, h, ref } from "vue";
 
 import "katex/dist/katex.css";
 import "./katex-playground.scss";
+
+declare const __VUEPRESS_SSR__: boolean;
 
 const locales = {
   "/": {
@@ -30,9 +31,12 @@ export default defineComponent({
     const result = ref("");
     const inError = ref(false);
 
-    watchImmediate(input, () => {
+    watchImmediate(input, async () => {
+      if (__VUEPRESS_SSR__) return;
+
       try {
-        // eslint-disable-next-line import-x/no-named-as-default-member
+        const { default: katex } = await import("katex");
+
         result.value = katex.renderToString(input.value, {
           displayMode: true,
           throwOnError: true,

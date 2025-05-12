@@ -1,10 +1,6 @@
 import { useEventListener, useStyleTag, watchImmediate } from "@vueuse/core";
 import { computed, onMounted } from "vue";
-import {
-  usePageFrontmatter,
-  useRouteLocale,
-  useRoutePath,
-} from "vuepress/client";
+import { useFrontmatter, useRouteLocale, useRoutePath } from "vuepress/client";
 
 import "./transparent-navbar.scss";
 
@@ -13,7 +9,7 @@ const BLOG_HOMEPAGE_STYLE = `\
 .theme-container .vp-page.vp-blog-home {
   padding-top: 0;
 }
-.vp-blog-hero.fullscreen {
+.vp-blog-hero.hero-fullscreen {
   height: 100vh;
 }
 `;
@@ -39,7 +35,7 @@ const COLOR_SELECTORS = [
   ".vp-navbar .auto-link.route-link-active",
   ".vp-action-link",
   ".vp-color-mode-switch",
-  ".vp-outlook-button",
+  ".vp-appearance-button",
   // search icons
   ".slimsearch-button",
   ".DocSearch-Button",
@@ -121,9 +117,9 @@ export const setupTransparentNavbar = ({
   light,
   dark,
 }: TransparentNavbarOptions = {}): void => {
+  const frontmatter = useFrontmatter();
   const routePath = useRoutePath();
   const routeLocale = useRouteLocale();
-  const frontmatter = usePageFrontmatter();
 
   const shouldTransparent = computed(
     type === "all"
@@ -134,7 +130,7 @@ export const setupTransparentNavbar = ({
             routePath.value === routeLocale.value
         : (): boolean =>
             (frontmatter.value.portfolio as boolean | undefined) ??
-            frontmatter.value.layout === "BlogHome",
+            frontmatter.value.layout === "Blog",
   );
 
   const transparentNavbar = (): void => {

@@ -1,9 +1,5 @@
 /** @deprecated */
-export type DeprecatedComponent =
-  | "AudioPlayer"
-  | "Replit"
-  | "VideoPlayer"
-  | "YouTube";
+export type DeprecatedComponent = "AudioPlayer" | "VideoPlayer" | "YouTube";
 
 export type AvailableComponent =
   | "ArtPlayer"
@@ -16,5 +12,4 @@ export type AvailableComponent =
   | "SiteInfo"
   | "VPBanner"
   | "VPCard"
-  | "VidStack"
-  | "XiGua";
+  | "VidStack";

@@ -73,8 +73,6 @@ export default theme("components", {
         "BiliBili",
         "CodePen",
         "PDF",
-        // @ts-expect-error: This component is deprecated
-        "Replit",
         "Share",
         "SiteInfo",
         "StackBlitz",
@@ -83,7 +81,6 @@ export default theme("components", {
         "VidStack",
         // @ts-expect-error: This component is deprecated
         "VideoPlayer",
-        "XiGua",
         // @ts-expect-error: This component is deprecated
         "YouTube",
       ],

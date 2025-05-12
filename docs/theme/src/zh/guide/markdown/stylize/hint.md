@@ -17,17 +17,14 @@ tag:
 
 提示容器默认启用，你可以禁用它:
 
-```ts twoslash {8} title=".vuepress/config.ts"
-import { defineUserConfig } from "vuepress";
+```ts twoslash {6} title=".vuepress/theme.ts"
 import { hopeTheme } from "vuepress-theme-hope";
 
-export default defineUserConfig({
-  theme: hopeTheme({
-    markdown: {
-      // 禁用提示容器
-      hint: false,
-    },
-  }),
+export default hopeTheme({
+  markdown: {
+    // 禁用提示容器
+    hint: false,
+  },
 });
 ```
 
@@ -153,10 +150,10 @@ const a = 1;
 ::: tip 自定义提示
 :::
 
-::: warning 自定义警告
+::: warning 自定义注意
 :::
 
-::: caution 自定义危险
+::: caution 自定义警告
 :::
 
 ::::

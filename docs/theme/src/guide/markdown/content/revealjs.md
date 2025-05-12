@@ -40,16 +40,13 @@ npm i -D @vuepress/plugin-revealjs@next
 
 Then enabling via:
 
-```ts twoslash {7} title=".vuepress/config.ts"
-import { defineUserConfig } from "vuepress";
+```ts twoslash {5} title=".vuepress/theme.ts"
 import { hopeTheme } from "vuepress-theme-hope";
 
-export default defineUserConfig({
-  theme: hopeTheme({
-    markdown: {
-      revealjs: true,
-    },
-  }),
+export default hopeTheme({
+  markdown: {
+    revealjs: true,
+  },
 });
 ```
 
@@ -141,7 +138,7 @@ For the appearance of each theme, see [Themes demo][revealjs-themes-demo].
 
 ::: important Assets Path
 
-Since markdown contents between `@slidestart` and `@slideend` are handled by Reveal.js at browser, so you can only use absolute paths for assets in slides, which must be accessible directly in browser, relative paths or alias are not supported.
+Since Markdown contents between `@slidestart` and `@slideend` are handled by Reveal.js at browser, so you can only use absolute paths for assets in slides, which must be accessible directly in browser, relative paths or alias are not supported.
 
 :::
 

@@ -29,7 +29,7 @@ Check [catalog plugin docs][catalog-config] for available plugin options.
 
 Controls `vuepress-plugin-components`, providing a set of components for Markdown.
 
-Available component which can be used in markdown files are:
+Available component which can be used in Markdown files are:
 
 - ArtPlayer: A video player powered by ArtPlayer
 - Badge: Colorful badge component
@@ -42,7 +42,6 @@ Available component which can be used in markdown files are:
 - VPBanner: A banner component
 - VPCard: A card component
 - VidStack: Audio/Video player powered by VidStack
-- XiGua: Embedded XiGua video
 
 You can set `plugins.components.components` with an array of components you want, by default it will be `["Badge"]`.
 

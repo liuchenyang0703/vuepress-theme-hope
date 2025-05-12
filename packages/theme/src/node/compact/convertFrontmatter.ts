@@ -1,16 +1,15 @@
+import { isString } from "@vuepress/helper";
 import type { HeadConfig, PageFrontmatter } from "vuepress/shared";
-import { isString } from "vuepress/shared";
 import { colors } from "vuepress/utils";
 import { createConverter } from "vuepress-shared";
 
-import type { ThemePageFrontmatter } from "../../shared/index.js";
+import type { ThemeBasePageFrontmatter } from "../../shared/index.js";
 import { logger } from "../utils.js";
 
 const DEPRECATED_FRONTMATTER_OPTIONS: [string, string][] = [
   ["authors", "author"],
   ["time", "date"],
   ["visitor", "pageview"],
-  ["sidebarDepth", "headerDepth"],
   ["copyrightText", "copyright"],
   ["anchorDisplay", "toc"],
   ["updateTime", "lastUpdated"],
@@ -36,7 +35,7 @@ const DROPPED_FRONTMATTER_OPTIONS: [string, string][] = [
 export const convertFrontmatter = (
   frontmatter: PageFrontmatter & Record<string, unknown>,
   filePathRelative: string,
-): ThemePageFrontmatter & Record<string, unknown> => {
+): ThemeBasePageFrontmatter & Record<string, unknown> => {
   const { deprecatedLogger, droppedLogger } = createConverter("frontmatter");
 
   DEPRECATED_FRONTMATTER_OPTIONS.forEach(([oldOption, newOption]) => {
@@ -93,16 +92,16 @@ export const convertFrontmatter = (
   }
 
   if (frontmatter.home === true) {
-    if (frontmatter.layout === "Blog") {
+    if (frontmatter.layout === "BlogHome") {
       logger.warn(
         `${colors.magenta(
-          "layout: Blog",
-        )} in frontmatter is deprecated, please use ${colors.magenta(
           "layout: BlogHome",
+        )} in frontmatter is deprecated, please use ${colors.magenta(
+          "layout: Blog",
         )} instead.${filePathRelative ? `Found in ${filePathRelative}` : ""}`,
       );
 
-      frontmatter.layout = "BlogHome";
+      frontmatter.layout = "Blog";
     }
 
     // Check project homepage
@@ -117,16 +116,46 @@ export const convertFrontmatter = (
       });
   }
 
-  if (frontmatter.layout === "Slides") {
+  if (frontmatter.layout === "SlidePage") {
     logger.warn(
       `${colors.magenta(
-        "layout: Slides",
-      )} in frontmatter is deprecated, please use ${colors.magenta(
         "layout: SlidePage",
+      )} in frontmatter is deprecated, please use ${colors.magenta(
+        "layout: Slides",
       )} instead.${filePathRelative ? `Found in ${filePathRelative}` : ""}`,
     );
 
-    frontmatter.layout = "SlidePage";
+    frontmatter.layout = "Slides";
+  }
+
+  if (typeof frontmatter.sidebarDepth === "number") {
+    logger.warn(
+      `${colors.magenta(
+        "sidebarDepth",
+      )} in frontmatter is deprecated, please use ${colors.magenta(
+        "toc.levels",
+      )} instead.${filePathRelative ? `Found in ${filePathRelative}` : ""}`,
+    );
+
+    if (frontmatter.toc !== false)
+      frontmatter.toc = {
+        levels: [2, frontmatter.sidebarDepth + 2],
+      };
+  }
+
+  if (typeof frontmatter.headerDepth === "number") {
+    logger.warn(
+      `${colors.magenta(
+        "headerDepth",
+      )} in frontmatter is deprecated, please use ${colors.magenta(
+        "toc.levels",
+      )} instead.${filePathRelative ? `Found in ${filePathRelative}` : ""}`,
+    );
+
+    if (frontmatter.toc !== false)
+      frontmatter.toc = {
+        levels: [2, frontmatter.headerDepth + 2],
+      };
   }
 
   return frontmatter;

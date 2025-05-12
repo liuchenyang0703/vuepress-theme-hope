@@ -1,6 +1,7 @@
 ---
 title: 主题预设
 icon: palette
+order: 7
 category:
   - 自定义
 tag:
@@ -12,58 +13,43 @@ tag:
 
 ## 组件相关
 
-::: tip
-
-为了通过别名替换组件，你需要将 `{ custom: true }` 作为第二个选项传入 `hopeTheme`。
-
-:::
-
 ### 必应壁纸
 
 将博客主页的背景替换为每日的必应壁纸。
 
-组件:
-
-- `"vuepress-theme-hope/presets/BingHeroBackground.js"`: 每日必应壁纸组件
-
 使用:
 
-覆盖 `@theme-hope/modules/blog/components/BlogHero`，将上方组件导入原 `BlogHero` 的 `bg` 插槽。
+使用组件 `"vuepress-theme-hope/presets/BingHeroBackground.js"` 覆盖 `<Blog>` 的 `heroBg` 插槽。
 
 ::: details 代码示例
 
-```ts twoslash title=".vuepress/config.ts"
-import { getDirname, path } from "vuepress/utils";
-import { defineUserConfig } from "vuepress";
-
-const __dirname = getDirname(import.meta.url);
-
-export default defineUserConfig({
-  // ...
-
-  alias: {
-    "@theme-hope/modules/blog/components/BlogHero": path.resolve(
-      __dirname,
-      "./components/BlogHero.vue",
-    ),
-  },
-});
-```
-
-```vue
-<!-- .vuepress/components/BlogHero.vue -->
+```vue title=".vuepress/layouts/Blog.vue"
 <script setup lang="ts">
-import BlogHero from "vuepress-theme-hope/blog/components/BlogHero.js";
+import { Blog } from "vuepress-theme-hope/blog";
 import BingHeroBackground from "vuepress-theme-hope/presets/BingHeroBackground.js";
 </script>
 
 <template>
-  <BlogHero>
-    <template #bg>
+  <Blog>
+    <template #heroBg>
       <BingHeroBackground />
     </template>
-  </BlogHero>
+  </Blog>
 </template>
+```
+
+```ts title=".vuepress/client.ts"
+import { defineClientConfig } from "vuepress/client";
+import Blog from "./layouts/Blog.vue";
+
+export default defineClientConfig({
+  //...
+
+  layouts: {
+    // ...
+    Blog,
+  },
+});
 ```
 
 :::
@@ -78,42 +64,37 @@ import BingHeroBackground from "vuepress-theme-hope/presets/BingHeroBackground.j
 
 使用:
 
-覆盖 `@theme-hope/modules/blog/components/BlogHero`，将上方组件导入原 `BlogHero` 的 `info` 插槽，同时原样传入插槽属性。
+使用组件 `"vuepress-theme-hope/presets/HitokotoBlogHero.js"` 覆盖 `<Blog>` 的 `heroInfo` 插槽。
 
 ::: details 示例
 
-```ts twoslash title=".vuepress/config.ts"
-import { getDirname, path } from "vuepress/utils";
-import { defineUserConfig } from "vuepress";
-
-const __dirname = getDirname(import.meta.url);
-
-export default defineUserConfig({
-  // ...
-
-  alias: {
-    "@theme-hope/modules/blog/components/BlogHero": path.resolve(
-      __dirname,
-      "./components/BlogHero.vue",
-    ),
-  },
-});
-```
-
-```vue
-<!-- .vuepress/components/BlogHero.vue -->
+```vue title=".vuepress/layouts/Blog.vue"
 <script setup lang="ts">
-import BlogHero from "vuepress-theme-hope/blog/components/BlogHero.js";
+import { Blog } from "vuepress-theme-hope/blog";
 import HitokotoBlogHero from "vuepress-theme-hope/presets/HitokotoBlogHero.js";
 </script>
 
 <template>
-  <BlogHero>
-    <template #info="info">
-      <HitokotoBlogHero v-bind="info" />
+  <Blog>
+    <template #heroInfo="data">
+      <HitokotoBlogHero v-bind="data" />
     </template>
-  </BlogHero>
+  </Blog>
 </template>
+```
+
+```ts title=".vuepress/client.ts"
+import { defineClientConfig } from "vuepress/client";
+import Blog from "./layouts/Blog.vue";
+
+export default defineClientConfig({
+  //...
+
+  layouts: {
+    // ...
+    Blog,
+  },
+});
 ```
 
 :::
@@ -305,26 +286,24 @@ export default defineClientConfig({
 
   ::: details 代码示例
 
-  ```ts twoslash
+  ```ts twoslash title=".vuepress/theme.ts"
   import { hopeTheme } from "vuepress-theme-hope";
   import { getRecentUpdatedArticles } from "vuepress-theme-hope/presets/getRecentUpdatedArticles.js";
 
-  export default {
-    theme: hopeTheme({
-      plugins: {
-        blog: {
-          type: [
-            getRecentUpdatedArticles({
-              locales: {
-                "/": "Recent Updated",
-                "/zh/": "最近更新",
-              },
-            }),
-          ],
-        },
+  export default hopeTheme({
+    plugins: {
+      blog: {
+        type: [
+          getRecentUpdatedArticles({
+            locales: {
+              "/": "Recent Updated",
+              "/zh/": "最近更新",
+            },
+          }),
+        ],
       },
-    }),
-  };
+    },
+  });
   ```
 
   :::
@@ -358,26 +337,24 @@ export default defineClientConfig({
 
   ::: details 代码示例
 
-  ```ts twoslash
+  ```ts twoslash title=".vuepress/theme.ts"
   import { hopeTheme } from "vuepress-theme-hope";
   import { getSlides } from "vuepress-theme-hope/presets/getSlides.js";
 
-  export default {
-    theme: hopeTheme({
-      plugins: {
-        blog: {
-          type: [
-            getSlides({
-              locales: {
-                "/": "Slides",
-                "/zh/": "幻灯片",
-              },
-            }),
-          ],
-        },
+  export default hopeTheme({
+    plugins: {
+      blog: {
+        type: [
+          getSlides({
+            locales: {
+              "/": "Slides",
+              "/zh/": "幻灯片",
+            },
+          }),
+        ],
       },
-    }),
-  };
+    },
+  });
   ```
 
   :::
